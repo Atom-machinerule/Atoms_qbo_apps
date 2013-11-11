@@ -1,0 +1,122 @@
+// Test program for Sparkfun Ardumoto board with servos attached
+// Copyright 2009 mechomaniac.com
+ 
+// To use, connect the Arduino to a computer and send commans using a serial terminal.
+// eg AR40#   motor A forwards with a speed of 40
+//    S120#   servo 1 to position 20 degrees
+ 
+ 
+#include <Servo.h>
+ 
+#define PwmPinMotorA 3 // this has been moved from pin 11 on the original Ardumoto
+#define PwmPinMotorB 11
+#define DirectionPinMotorA 12
+#define DirectionPinMotorB 13
+#define SerialSpeed 115200
+#define BufferLength 16
+#define LineEnd '#'
+#define PinServo1 7
+#define PinServo2 8
+#define PinServo3 9
+#define DefaultServoPosition 90
+ 
+Servo servo1;
+Servo servo2;
+Servo servo3;
+char inputBuffer[BufferLength];
+ 
+void setup()
+{
+  // motor and servo pins must be outputs
+  pinMode(PwmPinMotorA, OUTPUT);
+  pinMode(PwmPinMotorB, OUTPUT);
+  pinMode(DirectionPinMotorA, OUTPUT);
+  pinMode(DirectionPinMotorB, OUTPUT);
+  pinMode(PinServo1, OUTPUT);
+  pinMode(PinServo2, OUTPUT);
+  pinMode(PinServo3, OUTPUT);    
+  // attach servos and set servo-specific timing details
+  servo1.attach(PinServo1, 600, 2100); // Tower Pro SG90 servo
+  servo2.attach(PinServo2, 700, 2300); // Sanwa SRM-102 servo
+  servo3.attach(PinServo3, 600, 2100); // Tower Pro SG90 servo
+  // default servo positions
+  servo1.write(DefaultServoPosition);
+  servo2.write(DefaultServoPosition);
+  servo3.write(DefaultServoPosition);  
+ 
+  Serial.begin(SerialSpeed); 
+}
+ 
+// process a command string
+void HandleCommand(char* input, int length)
+{
+  Serial.println(input);
+  if (length < 2) { // not a valid command
+    return;
+  }
+  int value = 0;
+  // calculate number following command
+  if (length > 2) {
+    value = atoi(&input[2]);
+  }
+  int* command = (int*)input;
+  // check commands
+  // note that the two bytes are swapped, ie 'RA' means command AR
+  switch(*command) {
+    case 'FA':
+      // motor  forwards
+      analogWrite(PwmPinMotorA, value);
+      digitalWrite(DirectionPinMotorA, LOW);
+      analogWrite(PwmPinMotorB, value);
+      digitalWrite(DirectionPinMotorB, HIGH);
+      break;
+    case 'BA':
+      // motor  backwards
+      analogWrite(PwmPinMotorA, value);
+      digitalWrite(DirectionPinMotorA, HIGH);
+      analogWrite(PwmPinMotorB, value);
+      digitalWrite(DirectionPinMotorB, LOW);
+      break;
+    case  'LA':
+    // motor LEFT
+      analogWrite(PwmPinMotorA, value);
+      digitalWrite(DirectionPinMotorA, HIGH);
+      analogWrite(PwmPinMotorB, value);
+      digitalWrite(DirectionPinMotorB, HIGH);
+      break;
+    case  'RA':
+      // motor RIGHT
+      analogWrite(PwmPinMotorA, value);
+      digitalWrite(DirectionPinMotorA, LOW);
+      analogWrite(PwmPinMotorB, value);
+      digitalWrite(DirectionPinMotorB, LOW);
+      break;
+    case '1S':
+      // servo1      
+      servo1.write(value);
+      break;
+    case '2S':
+      // servo2  
+      servo2.write(value);
+      break;
+    case '3S':
+      // servo 3
+      servo3.write(value);
+      break;
+    default:
+      Serial.println("unknown command");
+      break;
+  }  
+} 
+ 
+void loop()
+{ 
+  // get a command string form the serial port
+  int inputLength = 0;
+  do {
+    while (!Serial.available()); // wait for input
+    inputBuffer[inputLength] = Serial.read(); // read it in
+  } while (inputBuffer[inputLength] != LineEnd && ++inputLength < BufferLength);
+  inputBuffer[inputLength] = 0; //  add null terminator
+  HandleCommand(inputBuffer, inputLength);
+}

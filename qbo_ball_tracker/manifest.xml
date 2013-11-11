@@ -1,0 +1,19 @@
+<package>
+  <description brief="qbo_ball_tracker">
+     Ball Tracker for the QBO Robot
+  </description>
+  <author>Atom</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url></url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="uvc_cam"/>
+  
+ 
+</package>
+
+

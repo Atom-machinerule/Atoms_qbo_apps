@@ -1,0 +1,20 @@
+<package>
+  <description brief="qbo_communicator">
+
+     Atom
+
+  </description>
+  <author>Atom</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/Atom</url>
+  <depend package="geometry_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="pocketsphinx"/>
+  <depend package="sound_play"/>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+
+</package>
+
+

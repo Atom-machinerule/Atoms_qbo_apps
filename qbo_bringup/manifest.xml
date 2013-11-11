@@ -1,0 +1,23 @@
+<package>
+  <description brief="qbo_bringup">
+
+     qbo_bringup is a list of roslaunch scripts necessary for navigation and visualization of the QBO robot. 
+
+  </description>
+  <author>Atom</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/qbo_bringup</url>
+  
+
+  <depend package="qbo_description"/>
+  <depend package="robot_state_publisher"/>
+  <depend package="pointcloud_to_laserscan"/>
+  <depend package="openni_camera"/>
+
+  <!-- for video teleoperation -->
+  <depend package="compressed_image_transport"/>
+  
+</package>
+
+

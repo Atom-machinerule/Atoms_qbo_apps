@@ -1,0 +1,23 @@
+<package>
+  <description brief="pi_head_tracking_tutorial">
+     Head Tracking Tutorial for the Pi Robot Project
+  </description>
+  <author>Patrick Goebel</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://www.pirobot.org/blog/0016</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="rviz"/>
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="uvc_cam"/>
+  <!--
+  <depend package="arbotix_python"/>
+  <depend package="robotis"/>
+  -->
+  <depend package="openni_camera"/>
+</package>
+
+

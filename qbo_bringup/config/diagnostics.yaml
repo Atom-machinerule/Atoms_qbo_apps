@@ -1,0 +1,19 @@
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+  mode:
+    type: GenericAnalyzer
+    path: 'Mode'
+    timeout: 5.0
+    startswith: ['Operating Mode']
+  sensors: 
+    type: GenericAnalyzer
+    path: 'Sensors'
+    timeout: 5.0
+    startswith: ['Wall Sensor', 'Gyro Sensor']
+  power:
+    type: GenericAnalyzer
+    path: 'Power System'
+    timeout: 5.0
+    startswith: ['Battery']
+  

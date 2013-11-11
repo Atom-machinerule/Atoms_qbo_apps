@@ -1,0 +1,7 @@
+<library path="lib/libqbo_follower">
+ <class name="qbo_follower/qboFollower" type="qbo_follower::qboFollower" base_class_type="nodelet::Nodelet">
+ <description>
+ The QBO people follower node.
+ </description>
+ </class>
+</library> 

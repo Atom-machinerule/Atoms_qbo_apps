@@ -1,0 +1,20 @@
+<launch>
+
+  <arg name="urdf_file" default="$(find xacro)/xacro.py '$(find qbo_description)/urdf/qbo.urdf.xacro'" />
+  <param name="robot_description" command="$(arg urdf_file)" />
+
+  <include file="$(find qbo_bringup)/params.launch" />
+  <include file="$(find qbo_arduqbo)/launch/qbo_dynamixel.launch" /> 
+  
+
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="30.0" />
+    <!--param name="tf_prefix" type="string" value="" /-->
+  </node>
+
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator" >
+    <!-- Load the file you made above -->
+    <rosparam command="load" file="$(find qbo_bringup)/config/diagnostics.yaml" />
+  </node>
+  
+</launch>

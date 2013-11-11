@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/745/trunk/pi_tutorials/pi_head_tracking_tutorial
+END
+manifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/744/trunk/pi_tutorials/pi_head_tracking_tutorial/manifest.xml
+END
+mainpage.dox
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/469/trunk/pi_tutorials/pi_head_tracking_tutorial/mainpage.dox
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/469/trunk/pi_tutorials/pi_head_tracking_tutorial/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/469/trunk/pi_tutorials/pi_head_tracking_tutorial/Makefile
+END

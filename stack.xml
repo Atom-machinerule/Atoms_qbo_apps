@@ -1,0 +1,9 @@
+<stack>
+  <description brief="Atoms_qbo_apps">Atoms_qbo_apps</description>
+  <author>Maintained by Atom/atom@machinerule.com</author>
+  <license>GPLv2, LGPLv2.1</license>  
+  <review status="unreviewed" notes=""/>
+
+  <depend stack="ros" />
+
+</stack>
